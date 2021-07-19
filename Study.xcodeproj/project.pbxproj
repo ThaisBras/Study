@@ -58,16 +58,56 @@
 		DF24D2D226A62716009BADFD /* Study */ = {
 			isa = PBXGroup;
 			children = (
-				DF24D2D326A62716009BADFD /* AppDelegate.swift */,
-				DF24D2D526A62716009BADFD /* SceneDelegate.swift */,
-				DF24D2D726A62716009BADFD /* ViewController.swift */,
-				DF24D2D926A62716009BADFD /* Main.storyboard */,
+				DF24D2EE26A62A4A009BADFD /* View */,
+				DF24D2ED26A62943009BADFD /* CoreData */,
+				DF24D2EC26A6292B009BADFD /* Storyboard */,
+				DF24D2EB26A6290D009BADFD /* ViewController */,
+				DF24D2EA26A628DD009BADFD /* Delegates */,
 				DF24D2DF26A62718009BADFD /* Assets.xcassets */,
-				DF24D2E126A62718009BADFD /* LaunchScreen.storyboard */,
-				DF24D2E426A62718009BADFD /* Info.plist */,
-				DF24D2DC26A62716009BADFD /* Study.xcdatamodeld */,
 			);
 			path = Study;
+			sourceTree = "<group>";
+		};
+		DF24D2EA26A628DD009BADFD /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				DF24D2D326A62716009BADFD /* AppDelegate.swift */,
+				DF24D2D526A62716009BADFD /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		DF24D2EB26A6290D009BADFD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DF24D2D726A62716009BADFD /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DF24D2EC26A6292B009BADFD /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DF24D2D926A62716009BADFD /* Main.storyboard */,
+				DF24D2E126A62718009BADFD /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		DF24D2ED26A62943009BADFD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DF24D2DC26A62716009BADFD /* Study.xcdatamodeld */,
+				DF24D2E426A62718009BADFD /* Info.plist */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		DF24D2EE26A62A4A009BADFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,10 +337,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Thata.Study;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -316,10 +357,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Thata.Study;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
