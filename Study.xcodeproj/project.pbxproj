@@ -17,6 +17,7 @@
 		DF24D2F026A8FD78009BADFD /* ModalFirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */; };
 		DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */; };
 		DF24D2F426AF7027009BADFD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F326AF7026009BADFD /* TextField.swift */; };
+		DF24D2F626AF987D009BADFD /* SecondViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F526AF987D009BADFD /* SecondViewController .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalFirstScene.swift; sourceTree = "<group>"; };
 		DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSecondScene.swift; sourceTree = "<group>"; };
 		DF24D2F326AF7026009BADFD /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		DF24D2F526AF987D009BADFD /* SecondViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				DF24D2D726A62716009BADFD /* ViewController.swift */,
 				DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */,
+				DF24D2F526AF987D009BADFD /* SecondViewController .swift */,
 				DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */,
 			);
 			path = ViewController;
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */,
+				DF24D2F626AF987D009BADFD /* SecondViewController .swift in Sources */,
 				DF24D2D826A62716009BADFD /* ViewController.swift in Sources */,
 				DF24D2D426A62716009BADFD /* AppDelegate.swift in Sources */,
 				DF24D2F426AF7027009BADFD /* TextField.swift in Sources */,

@@ -161,16 +161,11 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/4.5).isActive = true
         
         //Botão Checked/Unchecked
-        var buttonChecked: UIButton!
-        var buttonUnchecked: UIButton!
-        
-        buttonChecked.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
-        buttonUnchecked.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -188,7 +183,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     @objc
     func cancel() {
-        print("left bar button action")
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc
