@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var buttonAdd: UIBarButtonItem?
-    var buttonEdit: UIBarButtonItem?
+    var buttonAdd: UIBarButtonItem!
+    var buttonEdit: UIBarButtonItem!
     
 
     override func viewDidLoad() {
@@ -19,12 +19,13 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)]
+     
        
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         title = "Disciplinas"
         
         //Botão de adicionar Disciplinas
-        buttonAdd = UIBarButtonItem(image: UIImage(systemName: "add"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
+        buttonAdd = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
         navigationItem.rightBarButtonItem = buttonAdd!
         
         //Botão de Editar
@@ -34,7 +35,10 @@ class ViewController: UIViewController {
     
     @objc
     func addNewSubject() {
-        print("right bar button action")
+        let root = ModalFirstScene()
+                let vc = UINavigationController(rootViewController: root)
+                vc.modalPresentationStyle = .automatic
+                present(vc, animated: true)
     }
 
     @objc

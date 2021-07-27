@@ -102,7 +102,7 @@ class ModalFirstScene: UIViewController {
 
     @objc
     func cancel() {
-        print("left bar button action")
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

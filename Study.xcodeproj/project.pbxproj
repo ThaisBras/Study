@@ -15,6 +15,8 @@
 		DF24D2E026A62718009BADFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF24D2DF26A62718009BADFD /* Assets.xcassets */; };
 		DF24D2E326A62718009BADFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF24D2E126A62718009BADFD /* LaunchScreen.storyboard */; };
 		DF24D2F026A8FD78009BADFD /* ModalFirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */; };
+		DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */; };
+		DF24D2F426AF7027009BADFD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F326AF7026009BADFD /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		DF24D2E226A62718009BADFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF24D2E426A62718009BADFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalFirstScene.swift; sourceTree = "<group>"; };
+		DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSecondScene.swift; sourceTree = "<group>"; };
+		DF24D2F326AF7026009BADFD /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 				DF24D2EA26A628DD009BADFD /* Delegates */,
 				DF24D2DF26A62718009BADFD /* Assets.xcassets */,
 				DF24D2E426A62718009BADFD /* Info.plist */,
+				DF24D2F326AF7026009BADFD /* TextField.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 			children = (
 				DF24D2D726A62716009BADFD /* ViewController.swift */,
 				DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */,
+				DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -183,8 +189,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */,
 				DF24D2D826A62716009BADFD /* ViewController.swift in Sources */,
 				DF24D2D426A62716009BADFD /* AppDelegate.swift in Sources */,
+				DF24D2F426AF7027009BADFD /* TextField.swift in Sources */,
 				DF24D2D626A62716009BADFD /* SceneDelegate.swift in Sources */,
 				DF24D2DE26A62716009BADFD /* Study.xcdatamodeld in Sources */,
 				DF24D2F026A8FD78009BADFD /* ModalFirstScene.swift in Sources */,
