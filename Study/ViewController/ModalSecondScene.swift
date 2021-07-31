@@ -17,7 +17,20 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
       table.register(TextField.self, forCellReuseIdentifier: "cell")
       return table
     }()
+    let textView = UITextField(frame: CGRect(x: 0.0, y: 150.0, width: 400, height: 50.0)) //constraints de altura e largura
+    let datePicker: UIDatePicker = UIDatePicker()
+    var subject: Subject
+    weak var delegate: ModalSecondSceneDelegate?
     
+    init (subject: Subject){
+        self.subject = subject
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +53,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label.textAlignment = .left
         label.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.text = "Título da disciplina"
+        label.text = "Título da tarefa"
         
         self.view.addSubview(label)
         
@@ -50,13 +63,13 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         //UITextView
-        let textView = UITextView(frame: CGRect(x: 0.0, y: 150.0, width: 400, height: 50.0)) //constraints de altura e largura
+        
         
          textView.textAlignment = NSTextAlignment.justified
          textView.backgroundColor = UIColor.lightGray
          
         //PlaceHolder
-        textView.text = "Exemplo: Matemática"
+        textView.placeholder = "Exemplo: Prova 1"
         textView.textColor = UIColor.lightGray
 
         textView.becomeFirstResponder()
@@ -75,12 +88,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
          
          // Capitalize all characters user types
          textView.autocapitalizationType = UITextAutocapitalizationType.allCharacters
-         
-         // Make UITextView web links clickable
-         textView.isSelectable = true
-         textView.isEditable = false
-         textView.dataDetectorTypes = UIDataDetectorTypes.link
-         
+       
          // Make UITextView corners rounded
          textView.layer.cornerRadius = 0
          
@@ -89,9 +97,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
          textView.spellCheckingType = UITextSpellCheckingType.yes
          // myTextView.autocapitalizationType = UITextAutocapitalizationType.None
          
-         // Make UITextView Editable
-         textView.isEditable = true
-         
+        
          self.view.addSubview(textView)
         
         textView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
@@ -115,8 +121,6 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label2.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         // DatePicker
-        let datePicker: UIDatePicker = UIDatePicker()
-               
         // Posição
         datePicker.frame = CGRect(x: 90, y: 250, width: self.view.frame.width, height: 30)
         
@@ -178,7 +182,15 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @objc
     func save() {
-        print("right bar button action")
+        guard
+            let text = textView.text,
+            !text.isEmpty,
+            ((try? CoreDataStack.shared.createToDo(name: text, date: datePicker.date, subject: subject)) != nil)
+        else{
+            return
+        }
+        delegate?.updateList()
+        self.dismiss(animated: true, completion: nil)
     }
 
     @objc

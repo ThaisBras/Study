@@ -11,7 +11,7 @@ class ModalFirstScene: UIViewController {
     
     var buttonSave: UIBarButtonItem?
     var buttonCancel: UIBarButtonItem?
-    
+    let textView = UITextField(frame: CGRect(x: 0.0, y: 250.0, width: 400, height: 50.0)) //constraints de altura e largura
     
 
     override func viewDidLoad() {
@@ -45,13 +45,13 @@ class ModalFirstScene: UIViewController {
         label.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         //UITextView
-        let textView = UITextView(frame: CGRect(x: 0.0, y: 250.0, width: 400, height: 50.0)) //constraints de altura e largura
+        
         
          textView.textAlignment = NSTextAlignment.justified
          textView.backgroundColor = UIColor.lightGray
          
         //PlaceHolder
-        textView.text = "Exemplo: Matemática"
+        textView.placeholder = "Exemplo: Matemática"
         textView.textColor = UIColor.lightGray
 
         textView.becomeFirstResponder()
@@ -71,10 +71,6 @@ class ModalFirstScene: UIViewController {
          // Capitalize all characters user types
          textView.autocapitalizationType = UITextAutocapitalizationType.allCharacters
          
-         // Make UITextView web links clickable
-         textView.isSelectable = true
-         textView.isEditable = false
-         textView.dataDetectorTypes = UIDataDetectorTypes.link
          
          // Make UITextView corners rounded
          textView.layer.cornerRadius = 0
@@ -83,9 +79,7 @@ class ModalFirstScene: UIViewController {
          textView.autocorrectionType = UITextAutocorrectionType.yes
          textView.spellCheckingType = UITextSpellCheckingType.yes
          // myTextView.autocapitalizationType = UITextAutocapitalizationType.None
-         
-         // Make UITextView Editable
-         textView.isEditable = true
+    
          
          self.view.addSubview(textView)
         
@@ -97,7 +91,18 @@ class ModalFirstScene: UIViewController {
     
     @objc
     func save() {
-        print("right bar button action")
+        guard
+            let text = textView.text,
+            !text.isEmpty,
+            let subject = try? CoreDataStack.shared.createSubject(name: text)
+        
+        else {
+            print("deu ruim") //colocar um alert "não consegui salvar pois não tem texto"
+            return
+        }
+        print(subject)
+        self.dismiss(animated: true, completion: nil)
+       
     }
 
     @objc

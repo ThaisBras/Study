@@ -6,15 +6,29 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+  
     var buttonAdd: UIBarButtonItem!
     var buttonEdit: UIBarButtonItem!
-    
+    private var collectionView: UICollectionView?
 
+    private lazy var frc: NSFetchedResultsController<Subject> = {
+            let fetchRequest: NSFetchRequest<Subject> = Subject.fetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Subject.name, ascending: false)]
+
+            let frc = NSFetchedResultsController<Subject>(fetchRequest: fetchRequest,
+                                                          managedObjectContext: CoreDataStack.shared.mainContext,
+                                                        sectionNameKeyPath: nil,
+                                                        cacheName: nil)
+            frc.delegate = self
+            return frc
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
@@ -31,6 +45,41 @@ class ViewController: UIViewController {
         //Botão de Editar
         buttonEdit = UIBarButtonItem(title: "Editar", style: UIBarButtonItem.Style.plain, target: self, action: #selector(edit))
         navigationItem.leftBarButtonItem = buttonEdit!
+        
+        //CollectionView
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.bounds.width)-32, height: 76)
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        guard let collectionView = collectionView else {
+            return
+        }
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        view.addSubview(collectionView)
+        collectionView.frame = view.bounds
+        
+        let safeArea = view.layoutMarginsGuide
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        collectionView.backgroundColor = .clear
+        
+        do {
+            try frc.performFetch()
+        } catch  {
+            print("Falhou Fetch")
+        }
+        
+      
     }
     
     @objc
@@ -45,6 +94,41 @@ class ViewController: UIViewController {
     func edit() {
         print("left bar button action")
     }
-   
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        let number = frc.fetchedObjects?.count ?? 0
+        
+        return number
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
+        
+        let object = frc.object(at: indexPath)
+        
+        cell.configure(label: object.name ?? "")
+        
+        return cell
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+            switch type {
+            case .insert:
+                if let newIndexPath = newIndexPath {
+                    collectionView?.insertItems(at: [newIndexPath])
+                }
+            case .delete:
+                if let indexPath = indexPath {
+                    collectionView?.deleteItems(at: [indexPath])
+                }
+            default:
+                break
+            }
+            collectionView?.reloadData()
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SecondViewController(subject: frc.object(at: indexPath)), animated: true)
+    }
 }
 
