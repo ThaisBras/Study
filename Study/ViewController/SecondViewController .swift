@@ -96,8 +96,6 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
                 let vc = UINavigationController(rootViewController: root)
                 vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
-           
-            
         
     }
 
