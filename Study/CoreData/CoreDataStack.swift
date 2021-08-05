@@ -63,15 +63,63 @@ class CoreDataStack {
         try save()
     }
     
-    func createToDo(name: String, date: Date, subject: Subject) throws {
+    func getSubjects() throws -> [Subject]
+    {
+        let fetchRequest: NSFetchRequest<Subject> = Subject.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Subject.name, ascending: false)]
+
+        return try mainContext.fetch(fetchRequest)
+    }
+    
+//    func getSubjectByName(name: String) throws -> Subject?
+//    {
+//        let fetchRequest: NSFetchRequest<Subject> = Subject.fetchRequest()
+//        let namePredicate = NSPredicate(format: "name = %@", name)
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Subject.name, ascending: false)]
+//        fetchRequest.predicate = namePredicate
+//        let results = try mainContext.fetch(fetchRequest)
+//        if results.count > 0 {
+//            return results[0]
+//        }
+//        return nil
+//    }
+    
+    func createToDo(name: String, date: Date, subject: Subject, tasks: [String]) throws {
         let toDo = ToDo(context: mainContext)
         
         toDo.name = name
         toDo.finishDate = date
         subject.addToToDos(toDo)
         try save()
+        for t in tasks {
+            try self.createTasks(notes: t, toDo: toDo)
+        }
     }
     
+    func deleteToDo(toDo: ToDo) throws {
+        mainContext.delete(toDo)
+        
+        try save()
+    }
+    
+    func createTasks(notes: String, toDo: ToDo) throws {
+        let tasks = Task(context: mainContext)
+        
+        tasks.task = notes
+        tasks.done = false
+        toDo.addToTasks(tasks)
+        try save()
+    }
+    
+    func deleteTasks(tasks: Task) throws {
+        mainContext.delete(tasks)
+        
+        try save()
+    }
+    
+    func getEntityById(id: NSManagedObjectID) throws -> NSManagedObject? {
+        return try mainContext.existingObject(with: id)
+    }
     
 }
 

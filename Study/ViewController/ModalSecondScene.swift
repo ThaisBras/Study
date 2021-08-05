@@ -12,6 +12,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
    
     var buttonSave: UIBarButtonItem?
     var buttonCancel: UIBarButtonItem?
+    var buttonToDo: UIButton = UIButton ()
     let tableView: UITableView = {
         let table = UITableView()
       table.register(TextField.self, forCellReuseIdentifier: "cell")
@@ -19,8 +20,10 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
     }()
     let textView = UITextField(frame: CGRect(x: 0.0, y: 150.0, width: 400, height: 50.0)) //constraints de altura e largura
     let datePicker: UIDatePicker = UIDatePicker()
+    let textViewToDo = UITextField(frame: CGRect(x: 0.0, y: 340.0, width: 280, height: 50.0))
     var subject: Subject
     weak var delegate: ModalSecondSceneDelegate?
+    var tasks: [String] = []
     
     init (subject: Subject){
         self.subject = subject
@@ -63,15 +66,12 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         //UITextView
-        
-        
          textView.textAlignment = NSTextAlignment.justified
          textView.backgroundColor = UIColor.lightGray
          
         //PlaceHolder
-        textView.placeholder = "Exemplo: Prova 1"
-        textView.textColor = UIColor.lightGray
-
+        textView.placeholder = "  Exemplo: Prova 1"
+      
         textView.becomeFirstResponder()
 
         textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
@@ -149,9 +149,47 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         label3.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
-        //Botão Novo tópico
-      
+        //TextView ToDo
+        textViewToDo.textAlignment = NSTextAlignment.justified
+        textViewToDo.backgroundColor = UIColor.lightGray
         
+       //PlaceHolder
+       textViewToDo.placeholder = "  Exemplo: Fazer exercícios"
+     
+       textViewToDo.becomeFirstResponder()
+
+       textViewToDo.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        
+        // Use RGB colour
+        textViewToDo.backgroundColor = #colorLiteral(red: 0.9585992694, green: 0.9529004693, blue: 0.9629796147, alpha: 1)
+       
+        // Update UITextView font size and colour
+        textViewToDo.font = UIFont.systemFont(ofSize: 20)
+        textViewToDo.textColor = UIColor.black
+        
+        textViewToDo.font = UIFont.boldSystemFont(ofSize: 20)
+        textViewToDo.font = UIFont(name: "Verdana", size: 17)
+        
+        // Capitalize all characters user types
+        textViewToDo.autocapitalizationType = UITextAutocapitalizationType.allCharacters
+      
+        // Make UITextView corners rounded
+        textViewToDo.layer.cornerRadius = 0
+        
+        // Enable auto-correction and Spellcheck
+        textViewToDo.autocorrectionType = UITextAutocorrectionType.yes
+        textViewToDo.spellCheckingType = UITextSpellCheckingType.yes
+        
+        self.view.addSubview(textViewToDo)
+        
+        //Botão toDo
+        buttonToDo.frame = CGRect(x: 280.0, y: 315.0, width: 100.0, height: 100.0)
+        buttonToDo.setImage(UIImage(systemName: "plus"), for: .normal)
+        buttonToDo.addTarget(self, action: #selector(newToDo), for: .touchUpInside)
+        buttonToDo.tintColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
+        
+        self.view.addSubview(buttonToDo)
+
         //TableView
         tableView.dataSource = self
         tableView.delegate = self
@@ -159,25 +197,27 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
                 
-        tableView.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: view.frame.height/50).isActive = true
+        tableView.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: view.frame.height/10).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/4.5).isActive = true
         
-        //Botão Checked/Unchecked
        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return self.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TextField{
-            cell.backgroundColor = .clear
-            return cell
-        }
-        return UITableViewCell()
+//        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TextField{
+//            cell.backgroundColor = .clear
+//            return cell
+//        }
+        let cell = UITableViewCell()
+        cell.textLabel?.text = self.tasks [indexPath.row]
+        return cell
+        
     }
     
     @objc
@@ -185,7 +225,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         guard
             let text = textView.text,
             !text.isEmpty,
-            ((try? CoreDataStack.shared.createToDo(name: text, date: datePicker.date, subject: subject)) != nil)
+            ((try? CoreDataStack.shared.createToDo(name: text, date: datePicker.date, subject: subject, tasks: tasks)) != nil)
         else{
             return
         }
@@ -227,7 +267,15 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         print("New Topic tapped")
     }
     
-    
+    @objc
+    func newToDo(sender: UIButton!){
+        guard let t = textViewToDo.text else{
+            return
+        }
+        self.tasks.append(t)
+        textViewToDo.text = ""
+        tableView.reloadData()
+    }
     
 }
 

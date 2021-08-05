@@ -13,7 +13,7 @@ class SecondCollectionViewCell: UICollectionViewCell {
         
         private let myLabel: UILabel = {
             let label = UILabel()
-            label.text = "Custom"
+            label.text = "Matéria"
             label.textAlignment = .left
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
@@ -21,7 +21,7 @@ class SecondCollectionViewCell: UICollectionViewCell {
     
         private let myLabel2: UILabel = {
         let label2 = UILabel()
-        label2.text = "Custom"
+        label2.text = "Data"
         label2.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         label2.textAlignment = .left
         label2.translatesAutoresizingMaskIntoConstraints = false
@@ -47,10 +47,10 @@ class SecondCollectionViewCell: UICollectionViewCell {
             myLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             myLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
                 
-            myLabel2.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            myLabel2.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            myLabel2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            myLabel2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
+            myLabel2.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            myLabel2.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+            myLabel2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            myLabel2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)
                     
         ])
     }
@@ -73,6 +73,7 @@ class SecondCollectionViewCell: UICollectionViewCell {
         override func prepareForReuse() {
             super.prepareForReuse()
             myLabel.text = nil
+            myLabel2.text = nil
         }
         
     }

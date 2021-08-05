@@ -51,7 +51,7 @@ class ModalFirstScene: UIViewController {
          textView.backgroundColor = UIColor.lightGray
          
         //PlaceHolder
-        textView.placeholder = "Exemplo: Matemática"
+        textView.placeholder = "  Exemplo: Matemática"
         textView.textColor = UIColor.lightGray
 
         textView.becomeFirstResponder()

@@ -13,18 +13,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var buttonAdd: UIBarButtonItem!
     var buttonEdit: UIBarButtonItem!
     private var collectionView: UICollectionView?
+    var subjects: [Subject] = []
 
-    private lazy var frc: NSFetchedResultsController<Subject> = {
-            let fetchRequest: NSFetchRequest<Subject> = Subject.fetchRequest()
-            fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Subject.name, ascending: false)]
-
-            let frc = NSFetchedResultsController<Subject>(fetchRequest: fetchRequest,
-                                                          managedObjectContext: CoreDataStack.shared.mainContext,
-                                                        sectionNameKeyPath: nil,
-                                                        cacheName: nil)
-            frc.delegate = self
-            return frc
-        }()
+//    private lazy var frc: NSFetchedResultsController<Subject> = {
+//            let fetchRequest: NSFetchRequest<Subject> = Subject.fetchRequest()
+//            fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Subject.name, ascending: false)]
+//
+//            let frc = NSFetchedResultsController<Subject>(fetchRequest: fetchRequest,
+//                                                          managedObjectContext: CoreDataStack.shared.mainContext,
+//                                                        sectionNameKeyPath: nil,
+//                                                        cacheName: nil)
+//            frc.delegate = self
+//            return frc
+//        }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        do{
+            self.subjects = try CoreDataStack.shared.getSubjects()
+        } catch {
+            print(error)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +53,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         navigationItem.rightBarButtonItem = buttonAdd!
         
         //Botão de Editar
-        buttonEdit = UIBarButtonItem(title: "Editar", style: UIBarButtonItem.Style.plain, target: self, action: #selector(edit))
-        navigationItem.leftBarButtonItem = buttonEdit!
+        //buttonEdit = UIBarButtonItem(title: "Editar", style: UIBarButtonItem.Style.plain, target: self, action: #selector(edit))
+        //navigationItem.leftBarButtonItem = buttonEdit!
         
         //CollectionView
         let layout = UICollectionViewFlowLayout()
@@ -63,7 +73,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
         
-        let safeArea = view.layoutMarginsGuide
+        _ = view.layoutMarginsGuide
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -73,11 +83,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.backgroundColor = .clear
         
-        do {
-            try frc.performFetch()
-        } catch  {
-            print("Falhou Fetch")
-        }
+//        do {
+//            try frc.performFetch()
+//        } catch  {
+//            print("Falhou Fetch")
+//        }
         
       
     }
@@ -97,7 +107,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let number = frc.fetchedObjects?.count ?? 0
+        let number = self.subjects.count
         
         return number
     }
@@ -105,7 +115,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
         
-        let object = frc.object(at: indexPath)
+        let object = self.subjects[indexPath.row]
         
         cell.configure(label: object.name ?? "")
         
@@ -128,7 +138,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SecondViewController(subject: frc.object(at: indexPath)), animated: true)
+        navigationController?.pushViewController(SecondViewController(subject: self.subjects[indexPath.row]), animated: true)
     }
 }
 

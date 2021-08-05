@@ -23,6 +23,7 @@
 		DF24D2FC26B34DBB009BADFD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2FB26B34DBA009BADFD /* CoreDataStack.swift */; };
 		DF24D2FE26B358B9009BADFD /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */; };
 		DF24D30026B4C63F009BADFD /* ModalSecondSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */; };
+		DF24D30226B8AA17009BADFD /* ThirdViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D30126B8AA17009BADFD /* ThirdViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		DF24D2FB26B34DBA009BADFD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSecondSceneDelegate.swift; sourceTree = "<group>"; };
+		DF24D30126B8AA17009BADFD /* ThirdViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,8 @@
 		DF24D2C726A62715009BADFD = {
 			isa = PBXGroup;
 			children = (
-				DF24D2D226A62716009BADFD /* Study */,
 				DF24D2D126A62716009BADFD /* Products */,
+				DF24D2D226A62716009BADFD /* Study */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,17 +78,13 @@
 		DF24D2D226A62716009BADFD /* Study */ = {
 			isa = PBXGroup;
 			children = (
-				DF24D2EE26A62A4A009BADFD /* View */,
+				DF24D30326B9FDA5009BADFD /* Extras */,
 				DF24D2ED26A62943009BADFD /* CoreData */,
 				DF24D2EC26A6292B009BADFD /* Storyboard */,
 				DF24D2EB26A6290D009BADFD /* ViewController */,
 				DF24D2EA26A628DD009BADFD /* Delegates */,
 				DF24D2DF26A62718009BADFD /* Assets.xcassets */,
 				DF24D2E426A62718009BADFD /* Info.plist */,
-				DF24D2F326AF7026009BADFD /* TextField.swift */,
-				DF24D2F926B0E408009BADFD /* CustomCollectionViewCell.swift */,
-				DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */,
-				DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -130,11 +128,16 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		DF24D2EE26A62A4A009BADFD /* View */ = {
+		DF24D30326B9FDA5009BADFD /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				DF24D2F326AF7026009BADFD /* TextField.swift */,
+				DF24D2F926B0E408009BADFD /* CustomCollectionViewCell.swift */,
+				DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */,
+				DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */,
+				DF24D30126B8AA17009BADFD /* ThirdViewControllerDelegate.swift */,
 			);
-			path = View;
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */,
+				DF24D30226B8AA17009BADFD /* ThirdViewControllerDelegate.swift in Sources */,
 				DF24D2FA26B0E408009BADFD /* CustomCollectionViewCell.swift in Sources */,
 				DF24D2F826AFA794009BADFD /* ThirdViewController.swift in Sources */,
 				DF24D2F626AF987D009BADFD /* SecondViewController .swift in Sources */,

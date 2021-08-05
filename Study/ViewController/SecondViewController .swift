@@ -12,8 +12,9 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     var buttonAdd: UIBarButtonItem!
     var buttonEdit: UIBarButtonItem!
+    var buttonDelete: UIBarButtonItem!
     private var collectionView: UICollectionView?
-    private let subject: Subject
+    private var subject: Subject
     private var toDos: [ToDo]
     
     
@@ -30,6 +31,22 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        do{
+            if let s = try CoreDataStack.shared.getEntityById(id: self.subject.objectID) as? Subject{
+                self.subject = s
+                guard let toDos = subject.toDos?.allObjects as? [ToDo]
+                else {
+                    preconditionFailure("O modelo não foi feito corretamente")
+                }
+                self.toDos = toDos
+            }
+        } catch{
+            print(error)
+        }
+        collectionView?.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +61,11 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         
         //Botão de adicionar Disciplinas
         buttonAdd = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
-        navigationItem.rightBarButtonItem = buttonAdd!
+     
         
-        //Botão de Editar
-        //buttonEdit = UIBarButtonItem(title: "Editar", style: UIBarButtonItem.Style.plain, target: self, action: #selector(edit))
-       
+        buttonDelete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(buttonDeleteSubject))
+        navigationItem.rightBarButtonItems = [buttonAdd, buttonDelete]
+        
         
         //Colection View
         let layout = UICollectionViewFlowLayout()
@@ -67,7 +84,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
         
-        let safeArea = view.layoutMarginsGuide
+        _ = view.layoutMarginsGuide
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -98,6 +115,25 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         present(vc, animated: true)
         
     }
+    
+    @ objc
+    func buttonDeleteSubject(){
+        let alert = UIAlertController(title: "", message: "Tem certeza de que deseja apagar esta disciplina?", preferredStyle: .actionSheet)
+                
+        let delete = UIAlertAction(title: "Apagar", style: .destructive) { (_) in
+            self.dismiss(animated: true, completion: nil)
+            _ = try? CoreDataStack.shared.deleteSubject(subject: self.subject)
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+        let cancelDelete = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+                
+        alert.addAction(delete)
+        alert.addAction(cancelDelete)
+                
+        present(alert, animated: true, completion: nil)
+        print("Deletar a disciplina")
+    }
 
     @objc
     func edit() {
@@ -118,12 +154,14 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         
         cell.configure(label: object.name ?? "")
         
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ThirdViewController(toDos: toDos[indexPath.row]), animated: true)
+        navigationController?.pushViewController(ThirdViewController(toDos: toDos[indexPath.row], subject: subject), animated: true)
     }
+    
    
 }
 
