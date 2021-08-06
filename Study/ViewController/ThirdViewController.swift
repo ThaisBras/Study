@@ -119,11 +119,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TextField{
-        //            cell.backgroundColor = .clear
-        //            return cell
-        //        }
-        //        return UITableViewCell()
         let cell = UITableViewCell()
         cell.textLabel?.text = self.tasks[indexPath.row].done ? "✅  " : " ⃝  "
         cell.textLabel?.text = "\(cell.textLabel?.text ?? "") \(self.tasks[indexPath.row].task ?? "")"
@@ -140,7 +135,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         tableView.reloadData()
     }
-    
     
     @objc
     func edit() {

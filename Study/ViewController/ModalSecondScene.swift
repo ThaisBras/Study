@@ -210,10 +210,6 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TextField{
-//            cell.backgroundColor = .clear
-//            return cell
-//        }
         let cell = UITableViewCell()
         cell.textLabel?.text = self.tasks [indexPath.row]
         return cell
