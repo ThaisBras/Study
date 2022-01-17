@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import UIKit
 
-protocol ViewControllerDelegate {
+protocol ViewControllerDelegate: UIViewController {
     func didRegister()
 }

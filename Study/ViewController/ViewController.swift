@@ -114,7 +114,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SecondViewController(subject: self.subjects[indexPath.row]), animated: true)
+        let vc = SecondViewController(subject: self.subjects[indexPath.row])
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func didRegister() {
@@ -126,4 +128,5 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView?.reloadData()
     }
 }
+
 

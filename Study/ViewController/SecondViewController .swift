@@ -16,6 +16,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     private var collectionView: UICollectionView?
     private var subject: Subject
     private var toDos: [ToDo]
+    weak var delegate: ViewControllerDelegate?
     
     
     init (subject: Subject){
@@ -113,6 +114,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
                 let vc = UINavigationController(rootViewController: root)
                 vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
+        delegate?.didRegister()
         
     }
     
@@ -133,6 +135,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
                 
         present(alert, animated: true, completion: nil)
         print("Deletar a disciplina")
+        delegate?.didRegister()
     }
 
     @objc
@@ -145,6 +148,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         let number = toDos.count
         
         return number
+        delegate?.didRegister()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
