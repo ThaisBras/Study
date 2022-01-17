@@ -64,6 +64,7 @@
 				DF24D2EB26A6290D009BADFD /* ViewController */,
 				DF24D2EA26A628DD009BADFD /* Delegates */,
 				DF24D2DF26A62718009BADFD /* Assets.xcassets */,
+				DF24D2E426A62718009BADFD /* Info.plist */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -98,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				DF24D2DC26A62716009BADFD /* Study.xcdatamodeld */,
-				DF24D2E426A62718009BADFD /* Info.plist */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
