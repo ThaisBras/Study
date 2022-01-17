@@ -1,45 +1,73 @@
 //
-//  ViewController.swift
+//  SecondViewController .swift
 //  Study
 //
-//  Created by Thais da Silva Bras on 19/07/21.
+//  Created by Thais da Silva Bras on 26/07/21.
 //
 
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, ViewControllerDelegate{
+class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, ModalSecondSceneDelegate{
     
     var buttonAdd: UIBarButtonItem!
     var buttonEdit: UIBarButtonItem!
+    var buttonDelete: UIBarButtonItem!
     private var collectionView: UICollectionView?
-    var subjects: [Subject] = []
+    private var subject: Subject
+    private var toDos: [ToDo]
     
+    
+    init (subject: Subject){
+        self.subject = subject
+        guard let toDos = subject.toDos?.allObjects as? [ToDo]
+        else {
+            preconditionFailure("O modelo não foi feito corretamente")
+        }
+        self.toDos = toDos
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         do{
-            self.subjects = try CoreDataStack.shared.getSubjects()
-        } catch {
+            if let s = try CoreDataStack.shared.getEntityById(id: self.subject.objectID) as? Subject{
+                self.subject = s
+                guard let toDos = subject.toDos?.allObjects as? [ToDo]
+                else {
+                    preconditionFailure("O modelo não foi feito corretamente")
+                }
+                self.toDos = toDos
+            }
+        } catch{
             print(error)
         }
+        collectionView?.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)]
-        
+     
+       
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        title = "Disciplinas"
+        title = "Tarefas" //vai ter que ter uma função aqui
         
         //Botão de adicionar Disciplinas
         buttonAdd = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
-        navigationItem.rightBarButtonItem = buttonAdd!
+     
         
-        //CollectionView
+        buttonDelete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(buttonDeleteSubject))
+        navigationItem.rightBarButtonItems = [buttonAdd, buttonDelete]
+        
+        
+        //Colection View
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 20
@@ -65,17 +93,48 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         collectionView.backgroundColor = .clear
+        
     }
+    
+    func updateList() {
+        guard let toDos = self.subject.toDos?.allObjects as? [ToDo]
+        else {
+            preconditionFailure("O modelo não foi feito corretamente")
+        }
+        self.toDos = toDos
+        self.collectionView?.reloadData()
+    }
+    
     
     @objc
     func addNewSubject() {
-        let root = ModalFirstScene()
-        root.viewControllerDelegate = self
-        let vc = UINavigationController(rootViewController: root)
-        vc.modalPresentationStyle = .automatic
+        let root = ModalSecondScene(subject: subject)
+        root.delegate = self
+                let vc = UINavigationController(rootViewController: root)
+                vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
+        
     }
     
+    @ objc
+    func buttonDeleteSubject(){
+        let alert = UIAlertController(title: "", message: "Tem certeza de que deseja apagar esta disciplina?", preferredStyle: .actionSheet)
+                
+        let delete = UIAlertAction(title: "Apagar", style: .destructive) { (_) in
+            self.dismiss(animated: true, completion: nil)
+            _ = try? CoreDataStack.shared.deleteSubject(subject: self.subject)
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+        let cancelDelete = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+                
+        alert.addAction(delete)
+        alert.addAction(cancelDelete)
+                
+        present(alert, animated: true, completion: nil)
+        print("Deletar a disciplina")
+    }
+
     @objc
     func edit() {
         print("left bar button action")
@@ -83,7 +142,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let number = self.subjects.count
+        let number = toDos.count
         
         return number
     }
@@ -91,39 +150,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
         
-        let object = self.subjects[indexPath.row]
+        let object = toDos[indexPath.row]
         
         cell.configure(label: object.name ?? "")
         
+        
         return cell
-    }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let newIndexPath = newIndexPath {
-                collectionView?.insertItems(at: [newIndexPath])
-            }
-        case .delete:
-            if let indexPath = indexPath {
-                collectionView?.deleteItems(at: [indexPath])
-            }
-        default:
-            break
-        }
-        collectionView?.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SecondViewController(subject: self.subjects[indexPath.row]), animated: true)
+        navigationController?.pushViewController(ThirdViewController(toDos: toDos[indexPath.row], subject: subject), animated: true)
     }
     
-    func didRegister() {
-        do{
-            self.subjects = try CoreDataStack.shared.getSubjects()
-        } catch {
-            print(error)
-        }
-        collectionView?.reloadData()
-    }
+   
 }
 

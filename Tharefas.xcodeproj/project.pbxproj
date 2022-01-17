@@ -14,6 +14,17 @@
 		DF24D2DE26A62716009BADFD /* Study.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2DC26A62716009BADFD /* Study.xcdatamodeld */; };
 		DF24D2E026A62718009BADFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF24D2DF26A62718009BADFD /* Assets.xcassets */; };
 		DF24D2E326A62718009BADFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF24D2E126A62718009BADFD /* LaunchScreen.storyboard */; };
+		DF24D2F026A8FD78009BADFD /* ModalFirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */; };
+		DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */; };
+		DF24D2F426AF7027009BADFD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F326AF7026009BADFD /* TextField.swift */; };
+		DF24D2F626AF987D009BADFD /* SecondViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F526AF987D009BADFD /* SecondViewController .swift */; };
+		DF24D2F826AFA794009BADFD /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F726AFA794009BADFD /* ThirdViewController.swift */; };
+		DF24D2FA26B0E408009BADFD /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2F926B0E408009BADFD /* CustomCollectionViewCell.swift */; };
+		DF24D2FC26B34DBB009BADFD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2FB26B34DBA009BADFD /* CoreDataStack.swift */; };
+		DF24D2FE26B358B9009BADFD /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */; };
+		DF24D30026B4C63F009BADFD /* ModalSecondSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */; };
+		DF24D30226B8AA17009BADFD /* ThirdViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D30126B8AA17009BADFD /* ThirdViewControllerDelegate.swift */; };
+		DF24D30526BCA649009BADFD /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D30426BCA649009BADFD /* ViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +37,17 @@
 		DF24D2DF26A62718009BADFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF24D2E226A62718009BADFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF24D2E426A62718009BADFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalFirstScene.swift; sourceTree = "<group>"; };
+		DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSecondScene.swift; sourceTree = "<group>"; };
+		DF24D2F326AF7026009BADFD /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		DF24D2F526AF987D009BADFD /* SecondViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController .swift"; sourceTree = "<group>"; };
+		DF24D2F726AFA794009BADFD /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		DF24D2F926B0E408009BADFD /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF24D2FB26B34DBA009BADFD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSecondSceneDelegate.swift; sourceTree = "<group>"; };
+		DF24D30126B8AA17009BADFD /* ThirdViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DF24D30426BCA649009BADFD /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,8 +64,8 @@
 		DF24D2C726A62715009BADFD = {
 			isa = PBXGroup;
 			children = (
-				DF24D2D226A62716009BADFD /* Study */,
 				DF24D2D126A62716009BADFD /* Products */,
+				DF24D2D226A62716009BADFD /* Study */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,12 +80,13 @@
 		DF24D2D226A62716009BADFD /* Study */ = {
 			isa = PBXGroup;
 			children = (
-				DF24D2EE26A62A4A009BADFD /* View */,
+				DF24D30326B9FDA5009BADFD /* Extras */,
 				DF24D2ED26A62943009BADFD /* CoreData */,
 				DF24D2EC26A6292B009BADFD /* Storyboard */,
 				DF24D2EB26A6290D009BADFD /* ViewController */,
 				DF24D2EA26A628DD009BADFD /* Delegates */,
 				DF24D2DF26A62718009BADFD /* Assets.xcassets */,
+				DF24D2E426A62718009BADFD /* Info.plist */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -73,6 +96,7 @@
 			children = (
 				DF24D2D326A62716009BADFD /* AppDelegate.swift */,
 				DF24D2D526A62716009BADFD /* SceneDelegate.swift */,
+				DF24D30426BCA649009BADFD /* ViewControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -81,6 +105,10 @@
 			isa = PBXGroup;
 			children = (
 				DF24D2D726A62716009BADFD /* ViewController.swift */,
+				DF24D2EF26A8FD78009BADFD /* ModalFirstScene.swift */,
+				DF24D2F526AF987D009BADFD /* SecondViewController .swift */,
+				DF24D2F126AA2214009BADFD /* ModalSecondScene.swift */,
+				DF24D2F726AFA794009BADFD /* ThirdViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -98,16 +126,21 @@
 			isa = PBXGroup;
 			children = (
 				DF24D2DC26A62716009BADFD /* Study.xcdatamodeld */,
-				DF24D2E426A62718009BADFD /* Info.plist */,
+				DF24D2FB26B34DBA009BADFD /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		DF24D2EE26A62A4A009BADFD /* View */ = {
+		DF24D30326B9FDA5009BADFD /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				DF24D2F326AF7026009BADFD /* TextField.swift */,
+				DF24D2F926B0E408009BADFD /* CustomCollectionViewCell.swift */,
+				DF24D2FD26B358B9009BADFD /* SecondCollectionViewCell.swift */,
+				DF24D2FF26B4C63F009BADFD /* ModalSecondSceneDelegate.swift */,
+				DF24D30126B8AA17009BADFD /* ThirdViewControllerDelegate.swift */,
 			);
-			path = View;
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +177,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DF24D2CB26A62716009BADFD /* Build configuration list for PBXProject "Study" */;
+			buildConfigurationList = DF24D2CB26A62716009BADFD /* Build configuration list for PBXProject "Tharefas" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -180,10 +213,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF24D2F226AA2214009BADFD /* ModalSecondScene.swift in Sources */,
+				DF24D30226B8AA17009BADFD /* ThirdViewControllerDelegate.swift in Sources */,
+				DF24D2FA26B0E408009BADFD /* CustomCollectionViewCell.swift in Sources */,
+				DF24D2F826AFA794009BADFD /* ThirdViewController.swift in Sources */,
+				DF24D2F626AF987D009BADFD /* SecondViewController .swift in Sources */,
+				DF24D30526BCA649009BADFD /* ViewControllerDelegate.swift in Sources */,
+				DF24D30026B4C63F009BADFD /* ModalSecondSceneDelegate.swift in Sources */,
 				DF24D2D826A62716009BADFD /* ViewController.swift in Sources */,
 				DF24D2D426A62716009BADFD /* AppDelegate.swift in Sources */,
+				DF24D2FC26B34DBB009BADFD /* CoreDataStack.swift in Sources */,
+				DF24D2F426AF7027009BADFD /* TextField.swift in Sources */,
+				DF24D2FE26B358B9009BADFD /* SecondCollectionViewCell.swift in Sources */,
 				DF24D2D626A62716009BADFD /* SceneDelegate.swift in Sources */,
 				DF24D2DE26A62716009BADFD /* Study.xcdatamodeld in Sources */,
+				DF24D2F026A8FD78009BADFD /* ModalFirstScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +382,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = Thata.Study;
+				PRODUCT_BUNDLE_IDENTIFIER = Thata.Tharefas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -358,7 +402,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = Thata.Study;
+				PRODUCT_BUNDLE_IDENTIFIER = Thata.Tharefas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -368,7 +412,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DF24D2CB26A62716009BADFD /* Build configuration list for PBXProject "Study" */ = {
+		DF24D2CB26A62716009BADFD /* Build configuration list for PBXProject "Tharefas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF24D2E526A62718009BADFD /* Debug */,
