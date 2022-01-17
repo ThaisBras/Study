@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  SecondViewController .swift
 //  Study
 //
-//  Created by Thais da Silva Bras on 19/07/21.
+//  Created by Thais da Silva Bras on 26/07/21.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SecondViewController: UIViewController {
     
     var buttonAdd: UIBarButtonItem!
     var buttonEdit: UIBarButtonItem!
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
      
        
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        title = "Disciplinas"
+        title = "Teste" //vai ter que ter uma função aqui
         
         //Botão de adicionar Disciplinas
         buttonAdd = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     
     @objc
     func addNewSubject() {
-        let root = ModalFirstScene()
+        let root = ModalSecondScene()
                 let vc = UINavigationController(rootViewController: root)
                 vc.modalPresentationStyle = .automatic
                 present(vc, animated: true)
@@ -47,4 +47,3 @@ class ViewController: UIViewController {
     }
    
 }
-
