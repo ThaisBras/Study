@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF07C873279761C300A3BD77 /* AddSubjectsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07C872279761C300A3BD77 /* AddSubjectsDelegate.swift */; };
+		DF07C8752797677000A3BD77 /* AddToDosDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07C8742797677000A3BD77 /* AddToDosDelegate.swift */; };
 		DF24D2D426A62716009BADFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2D326A62716009BADFD /* AppDelegate.swift */; };
 		DF24D2D626A62716009BADFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2D526A62716009BADFD /* SceneDelegate.swift */; };
 		DF24D2D826A62716009BADFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2D726A62716009BADFD /* ViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF07C872279761C300A3BD77 /* AddSubjectsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectsDelegate.swift; sourceTree = "<group>"; };
+		DF07C8742797677000A3BD77 /* AddToDosDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDosDelegate.swift; sourceTree = "<group>"; };
 		DF24D2D026A62716009BADFD /* Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Study.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF24D2D326A62716009BADFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF24D2D526A62716009BADFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				DF24D2D326A62716009BADFD /* AppDelegate.swift */,
 				DF24D2D526A62716009BADFD /* SceneDelegate.swift */,
 				DF24D30426BCA649009BADFD /* ViewControllerDelegate.swift */,
+				DF07C872279761C300A3BD77 /* AddSubjectsDelegate.swift */,
+				DF07C8742797677000A3BD77 /* AddToDosDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -224,7 +230,9 @@
 				DF24D2D426A62716009BADFD /* AppDelegate.swift in Sources */,
 				DF24D2FC26B34DBB009BADFD /* CoreDataStack.swift in Sources */,
 				DF24D2F426AF7027009BADFD /* TextField.swift in Sources */,
+				DF07C873279761C300A3BD77 /* AddSubjectsDelegate.swift in Sources */,
 				DF24D2FE26B358B9009BADFD /* SecondCollectionViewCell.swift in Sources */,
+				DF07C8752797677000A3BD77 /* AddToDosDelegate.swift in Sources */,
 				DF24D2D626A62716009BADFD /* SceneDelegate.swift in Sources */,
 				DF24D2DE26A62716009BADFD /* Study.xcdatamodeld in Sources */,
 				DF24D2F026A8FD78009BADFD /* ModalFirstScene.swift in Sources */,

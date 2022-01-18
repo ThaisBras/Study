@@ -14,15 +14,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var buttonEdit: UIBarButtonItem!
     private var collectionView: UICollectionView?
     var subjects: [Subject] = []
+    let mulher = UIImageView()
+    let frase = UILabel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         do{
             self.subjects = try CoreDataStack.shared.getSubjects()
+            numeroDeCelulas()
+            collectionView?.reloadData()
         } catch {
             print(error)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        numeroDeCelulas()
+        collectionView?.reloadData()
     }
     
     override func viewDidLoad() {
@@ -31,6 +39,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)]
+        
+        view.addSubview(frase)
+        view.addSubview(mulher)
         
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         title = "Disciplinas"
@@ -65,12 +76,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         collectionView.backgroundColor = .clear
+        
+        //Empty States
+        mulher.image = UIImage(named: "mulher")
+        mulher.translatesAutoresizingMaskIntoConstraints = false
+        frase.text = "Clique em ”+” para criar sua primeira disciplina!"
+        
+        mulher.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        mulher.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        frase.numberOfLines = 0
+        frase.textAlignment = .center
+        frase.textColor = .label
+
+        frase.translatesAutoresizingMaskIntoConstraints = false
+        frase.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35).isActive = true
+        frase.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35).isActive = true
+        frase.topAnchor.constraint(equalTo: mulher.bottomAnchor, constant: 35).isActive = true
+        
     }
     
     @objc
     func addNewSubject() {
         let root = ModalFirstScene()
         root.viewControllerDelegate = self
+        root.delegate = self
         let vc = UINavigationController(rootViewController: root)
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
@@ -127,6 +157,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         collectionView?.reloadData()
     }
-}
+    
+    func numeroDeCelulas(){
+            if Int(self.subjects.count) != 0 {
+                collectionView?.isHidden = false
+                frase.isHidden = true
+                mulher.isHidden = true
 
+            } else{
+                collectionView?.isHidden = true
+                frase.isHidden = false
+                mulher.isHidden = false
+
+            }
+        }
+    
+}
+ 
+extension ViewController: AddSubjectsDelegate{
+    func addSubjects(subject: Subject) {
+        self.dismiss(animated: true){
+            self.collectionView?.reloadData()
+            self.numeroDeCelulas()
+        }
+    }
+}
 

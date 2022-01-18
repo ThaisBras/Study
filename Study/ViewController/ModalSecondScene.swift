@@ -24,6 +24,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
     var subject: Subject
     weak var delegate: ModalSecondSceneDelegate?
     var tasks: [String] = []
+    var delegateSegundo: AddToDosDelegate?
     
     init (subject: Subject){
         self.subject = subject
@@ -218,15 +219,19 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @objc
     func save() {
+    
         guard
             let text = textView.text,
             !text.isEmpty,
-            ((try? CoreDataStack.shared.createToDo(name: text, date: datePicker.date, subject: subject, tasks: tasks)) != nil)
+            let toDo = try? CoreDataStack.shared.createToDo(name: text, date: datePicker.date, subject: subject, tasks: tasks)
         else{
             return
         }
         delegate?.updateList()
+        delegateSegundo?.addToDos()
         self.dismiss(animated: true, completion: nil)
+       
+        
     }
 
     @objc

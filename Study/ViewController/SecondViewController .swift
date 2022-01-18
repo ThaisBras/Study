@@ -13,10 +13,12 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     var buttonAdd: UIBarButtonItem!
     var buttonEdit: UIBarButtonItem!
     var buttonDelete: UIBarButtonItem!
-    private var collectionView: UICollectionView?
+    private var collectionViewToDo: UICollectionView?
     private var subject: Subject
     private var toDos: [ToDo]
     weak var delegate: ViewControllerDelegate?
+    let mulher = UIImageView()
+    let frase = UILabel()
     
     
     init (subject: Subject){
@@ -37,6 +39,8 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         do{
             if let s = try CoreDataStack.shared.getEntityById(id: self.subject.objectID) as? Subject{
                 self.subject = s
+                numeroDeCelulas()
+                collectionViewToDo?.reloadData()
                 guard let toDos = subject.toDos?.allObjects as? [ToDo]
                 else {
                     preconditionFailure("O modelo não foi feito corretamente")
@@ -46,7 +50,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         } catch{
             print(error)
         }
-        collectionView?.reloadData()
+        collectionViewToDo?.reloadData()
     }
     
     override func viewDidLoad() {
@@ -55,6 +59,9 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)]
+        
+        view.addSubview(frase)
+        view.addSubview(mulher)
      
        
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -75,8 +82,8 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         layout.minimumInteritemSpacing = 1
         layout.itemSize = CGSize(width: (view.bounds.width)-32, height: 76)
         
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        guard let collectionView = collectionView else {
+        collectionViewToDo = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        guard let collectionView = collectionViewToDo else {
             return
         }
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
@@ -95,6 +102,23 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         
         collectionView.backgroundColor = .clear
         
+        //Empty States
+        mulher.image = UIImage(named: "mulher")
+        mulher.translatesAutoresizingMaskIntoConstraints = false
+        frase.text = "Clique em ”+” para criar sua primeira tarefa!"
+        
+        mulher.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        mulher.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        frase.numberOfLines = 0
+        frase.textAlignment = .center
+        frase.textColor = .label
+
+        frase.translatesAutoresizingMaskIntoConstraints = false
+        frase.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35).isActive = true
+        frase.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35).isActive = true
+        frase.topAnchor.constraint(equalTo: mulher.bottomAnchor, constant: 35).isActive = true
+        
     }
     
     func updateList() {
@@ -103,9 +127,8 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
             preconditionFailure("O modelo não foi feito corretamente")
         }
         self.toDos = toDos
-        self.collectionView?.reloadData()
+        self.collectionViewToDo?.reloadData()
     }
-    
     
     @objc
     func addNewSubject() {
@@ -166,6 +189,27 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         navigationController?.pushViewController(ThirdViewController(toDos: toDos[indexPath.row], subject: subject), animated: true)
     }
     
-   
+    func numeroDeCelulas(){
+            if Int(self.toDos.count) != 0 {
+                collectionViewToDo?.isHidden = false
+                frase.isHidden = true
+                mulher.isHidden = true
+
+            } else{
+                collectionViewToDo?.isHidden = true
+                frase.isHidden = false
+                mulher.isHidden = false
+
+            }
+        }
+}
+
+extension SecondViewController: AddToDosDelegate{
+    func addToDos() {
+        self.dismiss(animated: true){
+            self.collectionViewToDo?.reloadData()
+            self.numeroDeCelulas()
+        }
+    }
 }
 

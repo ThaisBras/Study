@@ -13,6 +13,7 @@ class ModalFirstScene: UIViewController {
     var buttonCancel: UIBarButtonItem?
     let textView = UITextField(frame: CGRect(x: 0.0, y: 250.0, width: 400, height: 50.0)) //constraints de altura e largura
     var viewControllerDelegate: ViewControllerDelegate?
+    var delegate: AddSubjectsDelegate?
     
     
     override func viewDidLoad() {
@@ -47,7 +48,6 @@ class ModalFirstScene: UIViewController {
         
         //UITextView
         
-        
         textView.textAlignment = NSTextAlignment.justified
         textView.backgroundColor = UIColor.lightGray
         
@@ -71,7 +71,6 @@ class ModalFirstScene: UIViewController {
         
         // Capitalize all characters user types
         textView.autocapitalizationType = UITextAutocapitalizationType.allCharacters
-        
         
         // Make UITextView corners rounded
         textView.layer.cornerRadius = 0
@@ -103,14 +102,14 @@ class ModalFirstScene: UIViewController {
         }
         print(subject)
         viewControllerDelegate?.didRegister()
-        self.dismiss(animated: true, completion: nil)
-        
+        delegate?.addSubjects(subject: subject)
         
     }
     
     @objc
     func cancel() {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
 }
