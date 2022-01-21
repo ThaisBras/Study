@@ -36,7 +36,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        do{
+        do {
             if let s = try CoreDataStack.shared.getEntityById(id: self.subject.objectID) as? Subject{
                 self.subject = s
                 numeroDeCelulas()
@@ -95,10 +95,10 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         _ = view.layoutMarginsGuide
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
         collectionView.backgroundColor = .clear
         
@@ -128,14 +128,15 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
         self.toDos = toDos
         self.collectionViewToDo?.reloadData()
+        numeroDeCelulas()
     }
     
     @objc
     func addNewSubject() {
         let root = ModalSecondScene(subject: subject)
         root.delegate = self
-                let vc = UINavigationController(rootViewController: root)
-                vc.modalPresentationStyle = .automatic
+        let vc = UINavigationController(rootViewController: root)
+        vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
         delegate?.didRegister()
         
@@ -168,10 +169,9 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let number = toDos.count
-        
-        return number
         delegate?.didRegister()
+        return toDos.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -189,27 +189,17 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         navigationController?.pushViewController(ThirdViewController(toDos: toDos[indexPath.row], subject: subject), animated: true)
     }
     
-    func numeroDeCelulas(){
-            if Int(self.toDos.count) != 0 {
+    func numeroDeCelulas() {
+            if Int(self.toDos.count) > 0 {
                 collectionViewToDo?.isHidden = false
                 frase.isHidden = true
                 mulher.isHidden = true
 
-            } else{
+            } else {
                 collectionViewToDo?.isHidden = true
                 frase.isHidden = false
                 mulher.isHidden = false
-
             }
         }
-}
-
-extension SecondViewController: AddToDosDelegate{
-    func addToDos() {
-        self.dismiss(animated: true){
-            self.collectionViewToDo?.reloadData()
-            self.numeroDeCelulas()
-        }
-    }
 }
 
