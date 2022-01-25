@@ -122,7 +122,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         // DatePicker
         // Posição
-        datePicker.frame = CGRect(x: 90, y: 250, width: self.view.frame.width, height: 30)
+        datePicker.frame = CGRect(x: -70, y: 250, width: self.view.frame.width, height: 30)
         
         // Propriedades
         datePicker.timeZone = NSTimeZone.local
