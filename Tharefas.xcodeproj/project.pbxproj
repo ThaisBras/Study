@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D60B912427B1A70D0050ACC7 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B912327B1A70D0050ACC7 /* String+Localization.swift */; };
 		D60B912A27B1AB680050ACC7 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = D60B912C27B1AB680050ACC7 /* Localization.strings */; };
+		D60B913327B1B67E0050ACC7 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60B913227B1B67E0050ACC7 /* Stickers.xcassets */; };
+		D60B913727B1B67E0050ACC7 /* Tharefas Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D60B913027B1B67A0050ACC7 /* Tharefas Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DF07C873279761C300A3BD77 /* AddSubjectsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07C872279761C300A3BD77 /* AddSubjectsDelegate.swift */; };
 		DF07C8752797677000A3BD77 /* AddToDosDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07C8742797677000A3BD77 /* AddToDosDelegate.swift */; };
 		DF24D2D426A62716009BADFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D2D326A62716009BADFD /* AppDelegate.swift */; };
@@ -31,12 +33,39 @@
 		DF24D30526BCA649009BADFD /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24D30426BCA649009BADFD /* ViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D60B913527B1B67E0050ACC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF24D2C826A62716009BADFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D60B912F27B1B67A0050ACC7;
+			remoteInfo = "Tharefas Stickers";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D60B913B27B1B67E0050ACC7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D60B913727B1B67E0050ACC7 /* Tharefas Stickers.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D60B912327B1A70D0050ACC7 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		D60B912827B1A8A10050ACC7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		D60B912927B1A8A10050ACC7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		D60B912B27B1AB680050ACC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
 		D60B912D27B1AB6C0050ACC7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localization.strings"; sourceTree = "<group>"; };
+		D60B913027B1B67A0050ACC7 /* Tharefas Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tharefas Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60B913227B1B67E0050ACC7 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		D60B913427B1B67E0050ACC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF07C872279761C300A3BD77 /* AddSubjectsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectsDelegate.swift; sourceTree = "<group>"; };
 		DF07C8742797677000A3BD77 /* AddToDosDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDosDelegate.swift; sourceTree = "<group>"; };
 		DF24D2D026A62716009BADFD /* Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Study.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,9 +109,19 @@
 			path = "Language ";
 			sourceTree = "<group>";
 		};
+		D60B913127B1B67A0050ACC7 /* Tharefas Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				D60B913227B1B67E0050ACC7 /* Stickers.xcassets */,
+				D60B913427B1B67E0050ACC7 /* Info.plist */,
+			);
+			path = "Tharefas Stickers";
+			sourceTree = "<group>";
+		};
 		DF24D2C726A62715009BADFD = {
 			isa = PBXGroup;
 			children = (
+				D60B913127B1B67A0050ACC7 /* Tharefas Stickers */,
 				DF24D2D126A62716009BADFD /* Products */,
 				DF24D2D226A62716009BADFD /* Study */,
 			);
@@ -92,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				DF24D2D026A62716009BADFD /* Study.app */,
+				D60B913027B1B67A0050ACC7 /* Tharefas Stickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +209,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D60B912F27B1B67A0050ACC7 /* Tharefas Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D60B913827B1B67E0050ACC7 /* Build configuration list for PBXNativeTarget "Tharefas Stickers" */;
+			buildPhases = (
+				D60B912E27B1B67A0050ACC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tharefas Stickers";
+			productName = "Tharefas Stickers";
+			productReference = D60B913027B1B67A0050ACC7 /* Tharefas Stickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		DF24D2CF26A62716009BADFD /* Study */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF24D2E726A62718009BADFD /* Build configuration list for PBXNativeTarget "Study" */;
@@ -176,10 +231,12 @@
 				DF24D2CC26A62716009BADFD /* Sources */,
 				DF24D2CD26A62716009BADFD /* Frameworks */,
 				DF24D2CE26A62716009BADFD /* Resources */,
+				D60B913B27B1B67E0050ACC7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D60B913627B1B67E0050ACC7 /* PBXTargetDependency */,
 			);
 			name = Study;
 			productName = Study;
@@ -195,6 +252,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					D60B912F27B1B67A0050ACC7 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					DF24D2CF26A62716009BADFD = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -215,11 +275,20 @@
 			projectRoot = "";
 			targets = (
 				DF24D2CF26A62716009BADFD /* Study */,
+				D60B912F27B1B67A0050ACC7 /* Tharefas Stickers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D60B912E27B1B67A0050ACC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D60B913327B1B67E0050ACC7 /* Stickers.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DF24D2CE26A62716009BADFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,6 +330,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D60B913627B1B67E0050ACC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D60B912F27B1B67A0050ACC7 /* Tharefas Stickers */;
+			targetProxy = D60B913527B1B67E0050ACC7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D60B912C27B1AB680050ACC7 /* Localization.strings */ = {
 			isa = PBXVariantGroup;
@@ -292,6 +369,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D60B913927B1B67E0050ACC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5LFGK7Q7S9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Tharefas Stickers/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Tharefas;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Thata.Tharefas.Tharefas-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D60B913A27B1B67E0050ACC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5LFGK7Q7S9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Tharefas Stickers/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Tharefas;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Thata.Tharefas.Tharefas-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		DF24D2E526A62718009BADFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -453,6 +572,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D60B913827B1B67E0050ACC7 /* Build configuration list for PBXNativeTarget "Tharefas Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D60B913927B1B67E0050ACC7 /* Debug */,
+				D60B913A27B1B67E0050ACC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DF24D2CB26A62716009BADFD /* Build configuration list for PBXProject "Tharefas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
