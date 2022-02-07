@@ -37,7 +37,7 @@ class ModalFirstScene: UIViewController {
         label.textAlignment = .left
         label.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.text = "Título da disciplina"
+        label.text = "Título da disciplina".localized()
         
         self.view.addSubview(label)
         
@@ -52,7 +52,7 @@ class ModalFirstScene: UIViewController {
         textView.backgroundColor = UIColor.lightGray
         
         //PlaceHolder
-        textView.placeholder = "  Exemplo: Matemática"
+        textView.placeholder = "  Exemplo: Matemática".localized()
         textView.textColor = UIColor.lightGray
         
         textView.becomeFirstResponder()

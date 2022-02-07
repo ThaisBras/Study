@@ -54,7 +54,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         label.textAlignment = .left
         label.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 22)
-        label.text = "Tarefa"
+        label.text = "Tarefa".localized()
         
         self.view.addSubview(label)
         
@@ -64,7 +64,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         label2.textAlignment = .left
         label2.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         label2.font = UIFont.systemFont(ofSize: 22)
-        label2.text = "Matéria"
+        label2.text = "Matéria".localized()
         
         self.view.addSubview(label2)
         
@@ -74,7 +74,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         label3.textAlignment = .left
         label3.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         label3.font = UIFont.systemFont(ofSize: 22)
-        label3.text = "Data"
+        label3.text = "Data".localized()
         
         self.view.addSubview(label3)
         
@@ -84,7 +84,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         label4.textAlignment = .left
         label4.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label4.font = UIFont.boldSystemFont(ofSize: 22)
-        label4.text = "To Do List"
+        label4.text = "To Do List".localized()
         
         self.view.addSubview(label4)
         

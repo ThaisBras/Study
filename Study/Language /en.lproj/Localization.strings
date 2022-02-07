@@ -1,0 +1,35 @@
+/* 
+  Localization.strings
+  Tharefas
+
+  Created by thais on 07/02/22.
+  
+*/
+
+//Tela: Disciplinas
+
+"Disciplinas" = "Subjects";
+"Clique em ”+” para criar sua primeira disciplina!" = "Click ”+” to create your first subject!";
+
+//Tela: Modal Disciplina
+
+"Título da disciplina" = "Subject title";
+"  Exemplo: Matemática" = "  Example: Math";
+
+//Tela: Tarefas
+
+"Tarefas" = "Tasks";
+"Clique em ”+” para criar sua primeira tarefa!" = "Click ”+” to create your first task!";
+
+//Tela: Modal Tarefas
+
+"Título da tarefa" = "Task title";
+"Exemplo: Prova 1" = "Example: Proof 1";
+"Data" = "Date";
+"To Do List" = "To Do List";
+"Exemplo: Fazer exercícios" = "Example: Exercise";
+
+//Tela: Tarefas Visualização
+
+"To Do List" = "To Do List";
+"Matéria" = "Subject";

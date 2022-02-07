@@ -56,7 +56,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label.textAlignment = .left
         label.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.text = "Título da tarefa"
+        label.text = "Título da tarefa".localized()
         
         self.view.addSubview(label)
         
@@ -70,7 +70,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         textView.backgroundColor = UIColor.lightGray
         
         //PlaceHolder
-        textView.placeholder = "  Exemplo: Prova 1"
+        textView.placeholder = "  Exemplo: Prova 1".localized()
         
         textView.becomeFirstResponder()
         
@@ -111,7 +111,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label2.textAlignment = .left
         label2.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label2.font = UIFont.boldSystemFont(ofSize: 22)
-        label2.text = "Data"
+        label2.text = "Data".localized()
         
         self.view.addSubview(label2)
         
@@ -140,7 +140,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         label3.textAlignment = .left
         label3.textColor = #colorLiteral(red: 1, green: 0.5266870856, blue: 0.4073979557, alpha: 1)
         label3.font = UIFont.boldSystemFont(ofSize: 22)
-        label3.text = "To Do List"
+        label3.text = "To Do List".localized()
         
         self.view.addSubview(label3)
         
@@ -154,7 +154,7 @@ class ModalSecondScene: UIViewController, UITableViewDelegate, UITableViewDataSo
         textViewToDo.backgroundColor = UIColor.lightGray
         
         //PlaceHolder
-        textViewToDo.placeholder = "  Exemplo: Fazer exercícios"
+        textViewToDo.placeholder = "  Exemplo: Fazer exercícios".localized()
         
         textViewToDo.becomeFirstResponder()
         

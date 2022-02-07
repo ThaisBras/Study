@@ -44,7 +44,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.addSubview(mulher)
         
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        title = "Disciplinas"
+        title = "Disciplinas".localized()
         
         //Botão de adicionar Disciplinas
         buttonAdd = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //Empty States
         mulher.image = UIImage(named: "mulher")
         mulher.translatesAutoresizingMaskIntoConstraints = false
-        frase.text = "Clique em ”+” para criar sua primeira disciplina!"
+        frase.text = "Clique em ”+” para criar sua primeira disciplina!".localized()
         
         mulher.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         mulher.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

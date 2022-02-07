@@ -65,7 +65,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
      
        
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        title = "Tarefas" //vai ter que ter uma função aqui
+        title = "Tarefas".localized() //vai ter que ter uma função aqui
         
         //Botão de adicionar Disciplinas
         buttonAdd = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(addNewSubject))
@@ -105,7 +105,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
         //Empty States
         mulher.image = UIImage(named: "mulher")
         mulher.translatesAutoresizingMaskIntoConstraints = false
-        frase.text = "Clique em ”+” para criar sua primeira tarefa!"
+        frase.text = "Clique em ”+” para criar sua primeira tarefa!".localized()
         
         mulher.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         mulher.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -144,7 +144,7 @@ class SecondViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     @ objc
     func buttonDeleteSubject(){
-        let alert = UIAlertController(title: "", message: "Tem certeza de que deseja apagar esta disciplina?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "Tem certeza de que deseja apagar esta disciplina?".localized(), preferredStyle: .actionSheet)
                 
         let delete = UIAlertAction(title: "Apagar", style: .destructive) { (_) in
             self.dismiss(animated: true, completion: nil)
